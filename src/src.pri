@@ -7,7 +7,12 @@ win32|os2 : Debug : CONFIG += console
 INCLUDEPATH += $$PWD
 DEPENDPATH += $$PWD
 
-QT += webkit network
+QT += network
+contains(QT_VERSION, ^5.*) {
+    QT += widgets webkitwidgets printsupport
+} else {
+    QT += webkit
+}
 
 # Share object files for faster compiling
 RCC_DIR     = $$PWD/.rcc
@@ -126,6 +131,9 @@ mac {
 }
 
 include(../webkittrunk.pri)
+
+# To support both Qt4 and Qt5
+DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x000000
 
 unix {
     PKGDATADIR = $$DATADIR/arora
