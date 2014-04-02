@@ -18,10 +18,24 @@
  */
 
 #include "browserapplication.h"
+#include <QSslConfiguration>
+#include <QSslCipher>
 
 #ifdef Q_OS_WIN
 #include "explorerstyle.h"
 #endif
+
+void setReasonableSslConfiguration() {
+    QSslConfiguration conf = QSslConfiguration::defaultConfiguration();
+    QList<QSslCipher> wantedCiphers;
+    Q_FOREACH(const QSslCipher& cipher, conf.ciphers()) {
+        if(cipher.usedBits()>=128) {
+	    wantedCiphers << cipher;
+	}
+    }
+    conf.setCiphers(wantedCiphers);
+    QSslConfiguration::setDefaultConfiguration(conf);
+}
 
 int main(int argc, char **argv)
 {
@@ -36,6 +50,7 @@ int main(int argc, char **argv)
 #ifdef Q_OS_WIN
     application.setStyle(new ExplorerStyle);
 #endif
+    setReasonableSslConfiguration();
     application.newMainWindow();
     return application.exec();
 }
