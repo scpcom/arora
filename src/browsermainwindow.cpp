@@ -731,16 +731,10 @@ void BrowserMainWindow::setupMenu()
     m_historyBackAction = new QAction(this);
     m_tabWidget->addWebAction(m_historyBackAction, QWebPage::Back);
     m_historyBackAction->setShortcuts(QKeySequence::Back);
-#if QT_VERSION < 0x040600 || (QT_VERSION >= 0x040600 && !defined(Q_WS_X11))
-    m_historyBackAction->setIconVisibleInMenu(false);
-#endif
 
     m_historyForwardAction = new QAction(this);
     m_tabWidget->addWebAction(m_historyForwardAction, QWebPage::Forward);
     m_historyForwardAction->setShortcuts(QKeySequence::Forward);
-#if QT_VERSION < 0x040600 || (QT_VERSION >= 0x040600 && !defined(Q_WS_X11))
-    m_historyForwardAction->setIconVisibleInMenu(false);
-#endif
 
     m_historyHomeAction = new QAction(this);
     connect(m_historyHomeAction, SIGNAL(triggered()), this, SLOT(goHome()));
@@ -777,9 +771,6 @@ void BrowserMainWindow::setupMenu()
 
     m_bookmarksAddAction = new QAction(this);
     m_bookmarksAddAction->setIcon(QIcon(QLatin1String(":addbookmark.png")));
-#if QT_VERSION < 0x040600 || (QT_VERSION >= 0x040600 && !defined(Q_WS_X11))
-    m_bookmarksAddAction->setIconVisibleInMenu(false);
-#endif
     connect(m_bookmarksAddAction, SIGNAL(triggered()),
             this, SLOT(addBookmark()));
     m_bookmarksAddAction->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_D));
