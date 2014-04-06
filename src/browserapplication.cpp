@@ -649,7 +649,7 @@ QIcon BrowserApplication::icon(const QUrl &url)
 
 QString BrowserApplication::installedDataDirectory()
 {
-#if defined(Q_WS_X11)
+#if defined(Q_OS_LINUX)
     return QLatin1String(PKGDATADIR);
 #else
     return qApp->applicationDirPath();
