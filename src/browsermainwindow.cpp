@@ -536,7 +536,6 @@ void BrowserMainWindow::setupMenu()
     m_fileQuit->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_Q));
     m_fileMenu->addAction(m_fileQuit);
 
-#if QT_VERSION >= 0x040600 && defined(Q_WS_X11)
     m_fileNewWindowAction->setIcon(QIcon::fromTheme(QLatin1String("window-new")));
     m_fileOpenFileAction->setIcon(QIcon::fromTheme(QLatin1String("document-open")));
     m_filePrintPreviewAction->setIcon(QIcon::fromTheme(QLatin1String("document-print-preview")));
@@ -544,7 +543,6 @@ void BrowserMainWindow::setupMenu()
     m_fileSaveAsAction->setIcon(QIcon::fromTheme(QLatin1String("document-save-as")));
     m_fileCloseWindow->setIcon(QIcon::fromTheme(QLatin1String("window-close")));
     m_fileQuit->setIcon(QIcon::fromTheme(QLatin1String("application-exit")));
-#endif
 
     // Edit
     m_editMenu = new QMenu(menuBar());
@@ -592,7 +590,6 @@ void BrowserMainWindow::setupMenu()
     connect(m_editFindPreviousAction, SIGNAL(triggered()), this, SLOT(editFindPrevious()));
     m_editMenu->addAction(m_editFindPreviousAction);
 
-#if QT_VERSION >= 0x040600 && defined(Q_WS_X11)
     m_editUndoAction->setIcon(QIcon::fromTheme(QLatin1String("edit-undo")));
     m_editRedoAction->setIcon(QIcon::fromTheme(QLatin1String("edit-redo")));
     m_editCutAction->setIcon(QIcon::fromTheme(QLatin1String("edit-cut")));
@@ -600,7 +597,6 @@ void BrowserMainWindow::setupMenu()
     m_editPasteAction->setIcon(QIcon::fromTheme(QLatin1String("edit-paste")));
     m_editSelectAllAction->setIcon(QIcon::fromTheme(QLatin1String("edit-select-all")));
     m_editFindAction->setIcon(QIcon::fromTheme(QLatin1String("edit-find")));
-#endif
 
     // View
     m_viewMenu = new QMenu(menuBar());
@@ -710,14 +706,12 @@ void BrowserMainWindow::setupMenu()
 
     m_stopIcon = style()->standardIcon(QStyle::SP_BrowserStop);
     m_reloadIcon = style()->standardIcon(QStyle::SP_BrowserReload);
-#if QT_VERSION >= 0x040600 && defined(Q_WS_X11)
     m_viewStopAction->setIcon(m_stopIcon);
     m_viewReloadAction->setIcon(m_reloadIcon);
     m_viewZoomInAction->setIcon(QIcon::fromTheme(QLatin1String("zoom-in")));
     m_viewZoomNormalAction->setIcon(QIcon::fromTheme(QLatin1String("zoom-original")));
     m_viewZoomOutAction->setIcon(QIcon::fromTheme(QLatin1String("zoom-out")));
     m_viewFullScreenAction->setIcon(QIcon::fromTheme(QLatin1String("view-fullscreen")));
-#endif
 
     // History
     m_historyMenu = new HistoryMenu(this);
@@ -749,10 +743,8 @@ void BrowserMainWindow::setupMenu()
     historyActions.append(m_tabWidget->recentlyClosedTabsAction());
     historyActions.append(m_historyRestoreLastSessionAction);
     m_historyMenu->setInitialActions(historyActions);
-#if QT_VERSION >= 0x040600 && defined(Q_WS_X11)
     m_historyRestoreLastSessionAction->setIcon(QIcon::fromTheme(QLatin1String("document-revert")));
     m_historyHomeAction->setIcon(QIcon::fromTheme(QLatin1String("go-home")));
-#endif
 
     // Bookmarks
     m_bookmarksMenu = new BookmarksMenuBarMenu(this);
@@ -860,11 +852,9 @@ void BrowserMainWindow::setupMenu()
             this, SLOT(aboutApplication()));
     m_helpMenu->addAction(m_helpAboutApplicationAction);
 
-#if QT_VERSION >= 0x040600 && defined(Q_WS_X11)
     m_helpChangeLanguageAction->setIcon(QIcon::fromTheme(QLatin1String("preferences-desktop-locale")));
     m_helpAboutQtAction->setIcon(QPixmap(QLatin1String(":/trolltech/qmessagebox/images/qtlogo-64.png")));
     m_helpAboutApplicationAction->setIcon(windowIcon());
-#endif
 }
 
 void BrowserMainWindow::aboutToShowViewMenu()
