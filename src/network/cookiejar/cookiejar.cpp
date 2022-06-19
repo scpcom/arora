@@ -66,6 +66,7 @@
 #include "browserapplication.h"
 
 #include <qapplication.h>
+#include <qdatastream.h>
 #include <qdir.h>
 #include <qmetaobject.h>
 #include <qsettings.h>

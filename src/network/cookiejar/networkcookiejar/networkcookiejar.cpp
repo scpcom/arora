@@ -49,6 +49,7 @@
 
 #include <qurl.h>
 #include <qdatetime.h>
+#include <qdatastream.h>
 
 #if defined(NETWORKCOOKIEJAR_DEBUG)
 #include <qdebug.h>
