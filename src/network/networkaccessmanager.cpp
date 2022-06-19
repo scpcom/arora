@@ -78,6 +78,7 @@
 #include "ui_proxy.h"
 
 #include <qdialog.h>
+#include <qfile.h>
 #include <qmessagebox.h>
 #include <qsettings.h>
 #include <qstyle.h>
@@ -167,6 +168,11 @@ void NetworkAccessManager::loadSettings()
     QList<QSslCertificate> ca_list = sslCfg.caCertificates();
     QList<QSslCertificate> ca_new = QSslCertificate::fromData(settings.value(QLatin1String("CaCertificates")).toByteArray());
     ca_list += ca_new;
+    if (QFile::exists(QLatin1String("/etc/ssl/certs"))) {
+        const auto os_certs = QSslCertificate::fromPath(QLatin1String("/etc/ssl/certs/*.pem"),
+                                                        QSsl::Pem, QRegExp::Wildcard);
+        ca_list += os_certs;
+    }
     sslCfg.setCaCertificates(ca_list);
     sslCfg.setProtocol(QSsl::AnyProtocol);
     QSslConfiguration::setDefaultConfiguration(sslCfg);
