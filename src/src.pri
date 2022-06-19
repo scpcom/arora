@@ -14,12 +14,6 @@ contains(QT_VERSION, ^5.*) {
     QT += webkit
 }
 
-# Share object files for faster compiling
-RCC_DIR     = $$PWD/.rcc
-UI_DIR      = $$PWD/.ui
-MOC_DIR     = $$PWD/.moc
-OBJECTS_DIR = $$PWD/.obj
-
 exists(../.git/HEAD) {
     GITVERSION=$$system(git log -n1 --pretty=format:%h)
     !isEmpty(GITVERSION) {

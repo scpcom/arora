@@ -11,11 +11,6 @@ QT += network
 # Input
 SOURCES += main.cpp
 
-RCC_DIR     = $$PWD/.rcc
-UI_DIR      = $$PWD/.ui
-MOC_DIR     = $$PWD/.moc
-OBJECTS_DIR = $$PWD/.obj
-
 include(../../install.pri)
 
 # To support both Qt4 and Qt5

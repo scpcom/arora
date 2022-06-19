@@ -15,11 +15,6 @@ contains(QT_VERSION, ^5.*) {
 # Input
 SOURCES += main.cpp
 
-RCC_DIR     = $$PWD/.rcc
-UI_DIR      = $$PWD/.ui
-MOC_DIR     = $$PWD/.moc
-OBJECTS_DIR = $$PWD/.obj
-
 RESOURCES += source.qrc
 
 include(../../install.pri)
